@@ -43,9 +43,9 @@ Classes1pRoads <- pmax(Classes1, roads*(k+1))
 plot(imagematrix(equalize(Classes1pRoads)))
 
 Classes2pRoads <- pmax(Classes2, roads*(k+1))
-image(Classes2pRoads, xaxt = 'n', yaxt='n', col=rainbow(k+1), asp=1)
+plot(imagematrix(equalize(Classes2pRoads)))
 
-## Distributions
+## Distributions and data for Classes1pRoads
 L <- 3
 
 # Very dark roads
@@ -72,3 +72,35 @@ SAR1[Classes1pRoads==5] <- SARclass5
 SAR1[Classes1pRoads==6] <- SARroads
 
 plot(imagematrix(equalize(SAR1)))
+
+## Distributions and data for Classes2pRoads
+L <- 1
+
+# Dark roads
+
+SARroads <- rgammaSAR(sum(Classes2pRoads==6), L, 30)
+
+# Increasingly brighter classes
+
+SARclass1 <- rgammaSAR(sum(Classes2pRoads==1), L, 40)
+SARclass2 <- rgammaSAR(sum(Classes2pRoads==2), L, 60)
+SARclass3 <- rgammaSAR(sum(Classes2pRoads==3), L, 80)
+SARclass4 <- rgammaSAR(sum(Classes2pRoads==4), L, 100)
+SARclass5 <- rgammaSAR(sum(Classes2pRoads==5), L, 200)
+
+# The observed SAR image
+
+SAR2 <- Classes2pRoads
+
+SAR2[Classes2pRoads==1] <- SARclass1
+SAR2[Classes2pRoads==2] <- SARclass2
+SAR2[Classes2pRoads==3] <- SARclass3
+SAR2[Classes2pRoads==4] <- SARclass4
+SAR2[Classes2pRoads==5] <- SARclass5
+SAR2[Classes2pRoads==6] <- SARroads
+
+plot(imagematrix(equalize(SAR2)))
+imagematrixPNG(imagematrix(equalize(SAR2)), name = "../../Images/PNG/1look.png")
+
+plot(imagematrix(equalize(SAR1)))
+imagematrixPNG(imagematrix(equalize(SAR1)), name = "../../Images/PNG/3looks.png")
