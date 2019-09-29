@@ -127,7 +127,9 @@ names(DensitiesSAR1.melt) <- c("x", "Distr", "Density")
 
 ggplot(DensitiesSAR1.melt, aes(x=x, y=Density, col=Distr)) + 
   geom_line(size=2, alpha=.7) +
-  theme_few(base_size = 30)
+  theme_few(base_size = 30) +
+  theme(legend.position="top",
+        legend.margin=margin(t = 0, unit='cm'))
 ggsave(file="../../Plots/PDF/DensitiesSAR1.pdf")  
 
 d10 <- dgammaSAR(x, 3, 10)
@@ -143,6 +145,8 @@ names(DensitiesSAR2.melt) <- c("x", "Distr", "Density")
 
 ggplot(DensitiesSAR2.melt, aes(x=x, y=Density, col=Distr)) + 
   geom_line(size=2, alpha=.7) +
-  theme_few(base_size = 30)
+  theme_few(base_size = 30) +
+  theme(legend.position="top",
+        legend.margin=margin(t = 0, unit='cm'))
 ggsave(file="../../Plots/PDF/DensitiesSAR2.pdf") 
 
