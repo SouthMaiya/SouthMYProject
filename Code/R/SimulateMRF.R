@@ -2,6 +2,7 @@ require(bayesImageS)
 require(tiff)
 require(reshape)
 source("GammaSAR.R")
+source("imagematrix.R")
 
 ### Example of simulation of a MRF
 set.seed(1234)
