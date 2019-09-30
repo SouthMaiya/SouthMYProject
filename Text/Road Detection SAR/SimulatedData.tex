@@ -27,7 +27,7 @@
 
 \begin{document}
 	
-\title{Road Detection in SAR Images using Simulated Data}
+\title{Road Detection from SAR Images with Deep Learning using Simulated Data}
 	
 \author{Xiangrong Zhang,~\IEEEmembership{Senior Member,~IEEE,}~Zhu Xiao Qian~\IEEEmembership{Student Member,~IEEE,},~and~Alejandro~C.~Frery,~\IEEEmembership{Senior Member,~IEEE}%
 	\thanks{X.~Zhang and Z.X. Qian are with the  (e-mail: xrzhang@mail.xidian.edu.cn)}% 
@@ -53,14 +53,14 @@ simulation,
 \IEEEdisplaynontitleabstractindextext
 \IEEEpeerreviewmaketitle
 
-\section{Proof-of-Concept}\label{sec:SamplingMethodology}
+\section{The Sampling Methodology}\label{sec:SamplingMethodology}
 
 We are able to simulate an arbitrary number of samples using a road map.
 
 Consider the model for image formation proposed by Geman and Geman~\cite{geman84}, and later extended by Bustos and Frery~\cite{buseucam92}.
-This model states that the observed image $Z$ is the result of a transformation $\tau$ of the unobserved truth $X$.
+This model states that the observed image $Z$ is the result of a transformation of the unobserved truth $X$.
 The transformation consists of:
-$phi$, a possibly nonlinear pointwise transformation of the truth;
+$\phi$, a possibly nonlinear pointwise transformation of the truth;
 $H$, a local degradation of $\phi(X)$;
 $Y$, the noise in the form of a random field, that enters the model by pointwise operations $\odot$.
 With this, we have:
@@ -145,11 +145,15 @@ Fig.~\ref{fig:Densities13} shows the densities used to model with one and three 
 \caption{Results of the proposed simulation pipeline}\label{fig:Pipeline}
 \end{figure}
 
+This approach allows obtaining an arbitrary number of samples of SAR images $Z$ from scenes $X$ with roads $X'$ corrupted by speckle with specified distributions.
+
 \appendix
 
 \section{Computational Information}
 
-The samples from the Potts model were obtained using the \verb|bayesImageS| library~\cite{ScalableBayesianInferencefortheInverseTemperatureofaHiddenPottsModel2018} for \verb|R|~\cite{R}.
+We obtained the Potts model samples using 
+\verb|R|~\cite{R}, and
+the \verb|bayesImageS| library~\cite{ScalableBayesianInferencefortheInverseTemperatureofaHiddenPottsModel2018}.
 
 \bibliographystyle{IEEEtran}
 \bibliography{../Common/bibliography}

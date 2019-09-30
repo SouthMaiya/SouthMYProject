@@ -14,10 +14,10 @@ blocks <- getBlocks(mask, 2)
 ### This is the number of classes and the parameter set to the transition
 k <- 5
 beta <- log(1+sqrt(k))
-res.sw <- swNoData(beta, k, neigh, blocks, niter=200)
+res.sw <- swNoData(2, k, neigh, blocks, niter=100)
 ### This is the output matrix
 z <- matrix(max.col(res.sw$z)[1:nrow(neigh)], nrow=nrow(mask))
-image(z, xaxt = 'n', yaxt='n', col=rainbow(k), asp=1)
+plot(imagematrix(equalize(z)))
 
 ### Example of a simulation of SAR images with the same road network
 
